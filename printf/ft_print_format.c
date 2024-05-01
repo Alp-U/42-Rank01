@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:30:42 by autku             #+#    #+#             */
-/*   Updated: 2024/04/24 22:21:30 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/01 13:45:46 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	print_format(char specifier, va_list ap)
 		count += print_digit((long)(va_arg(ap, unsigned int)), 16);
 	else if (specifier == 'p')
 	{
+		if (va_arg(ap, void *) == NULL)
+		{
+			count += write(1, "(nil)", 5);
+			return (count);
+		}
 		write(1, "0x", 2);
 		count += print_ptr((long)(va_arg(ap, void *)), 16) + 2;
 	}
@@ -36,3 +41,5 @@ int	print_format(char specifier, va_list ap)
 		count += print_char(specifier);
 	return (count);
 }
+
+/* Edge case: when ptr == NULL dann return (nill)*/

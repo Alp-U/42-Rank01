@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:46:40 by autku             #+#    #+#             */
-/*   Updated: 2024/04/24 22:20:52 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/01 15:39:28 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,18 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format)
 	{
-		if (*format == '%')
-			count += print_format(*(++format), ap);
+		if (*format == '%' && (*(format + 1) == '\0' || (*(format + 1) != 'c' && *(format + 1) != 's' && *(format + 1) != 'p' && *(format + 1) != 'd' && *(format + 1) != 'i' && *(format + 1) != 'u' && *(format + 1) != 'x' && *(format + 1) != 'X' && *(format + 1) != '%')))
+		{
+			count = -1;
+			break;
+		}
+		else if (*format == '%')
+		{
+            if (*(format + 1) == '%')
+				count += print_format(*(format + 1), ap);
+            else
+                return (-1);
+        }
 		else
 			count += write(1, format, 1);
 		++format;
