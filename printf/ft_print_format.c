@@ -26,20 +26,10 @@ int	print_format(char specifier, va_list ap)
 	else if (specifier == 'x')
 		count += print_digit((long)(va_arg(ap, unsigned int)), 16);
 	else if (specifier == 'p')
-	{
-		if (va_arg(ap, void *) == NULL)
-		{
-			count += write(1, "(nil)", 5);
-			return (count);
-		}
-		write(1, "0x", 2);
-		count += print_ptr((long)(va_arg(ap, void *)), 16) + 2;
-	}
+		count += print_ptr(va_arg(ap, void *));
 	else if (specifier == 'X')
 		count += print_hexc((long)(va_arg(ap, unsigned int)), 16);
 	else
 		count += print_char(specifier);
 	return (count);
 }
-
-/* Edge case: when ptr == NULL dann return (nill)*/

@@ -12,19 +12,25 @@
 
 NAME = libftprintf.a
 
+ODIR = object_files
+
 FUNCTIONS = ft_print_char.c ft_print_digit.c ft_printf.c ft_print_format.c ft_print_hexc.c ft_print_ptr.c ft_print_str.c
 
 CFLAGS = -Wextra -Wall -Werror
 
 OBJS = $(FUNCTIONS:.c=.o)
 
-all: $(NAME)
+all: $(NAME) $(ODIR)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
+$(ODIR):
+	mkdir -p $(ODIR)
+	mv *.o $(ODIR)
+
 clean:
-	rm -f $(OBJS)
+	rm -rf $(ODIR)
 
 fclean: clean
 	rm -f $(NAME)

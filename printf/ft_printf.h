@@ -25,7 +25,7 @@ int	print_digit(long n, int base);
 
 int	print_hexc(long n, int base);
 
-int	print_ptr(long n, int base);
+int	print_ptr(void *ptr);
 
 int	print_format(char specifier, va_list ap);
 

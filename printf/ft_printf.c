@@ -21,18 +21,14 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format)
 	{
-		if (*format == '%' && (*(format + 1) == '\0' || (*(format + 1) != 'c' && *(format + 1) != 's' && *(format + 1) != 'p' && *(format + 1) != 'd' && *(format + 1) != 'i' && *(format + 1) != 'u' && *(format + 1) != 'x' && *(format + 1) != 'X' && *(format + 1) != '%')))
-		{
-			count = -1;
-			break;
-		}
-		else if (*format == '%')
-		{
-            if (*(format + 1) == '%')
-				count += print_format(*(format + 1), ap);
-            else
-                return (-1);
-        }
+		if (*format == '%' && (*(format + 1) == '\0' || (*(format + 1) != 'c'
+					&& *(format + 1) != 's' && *(format + 1) != 'p'
+					&& *(format + 1) != 'd' && *(format + 1) != 'i'
+					&& *(format + 1) != 'u' && *(format + 1) != 'x'
+					&& *(format + 1) != 'X' && *(format + 1) != '%')))
+			return (write(1, "-1", 2), -1);
+		if (*format == '%')
+			count += print_format(*(++format), ap);
 		else
 			count += write(1, format, 1);
 		++format;

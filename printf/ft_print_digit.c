@@ -15,16 +15,19 @@
 int	print_digit(long n, int base)
 {
 	int		count;
-	char	*hexd;
+	char	*digit;
 
-	hexd = "0123456789abcdef";
-	if (n < base)
-		return (print_char(hexd[n]));
+	digit = "0123456789abcdef";
 	if (n < 0)
 	{
 		write(1, "-", 1);
 		return (print_digit(-n, base) + 1);
 	}
-	count = print_digit(n / base, base);
-	return (count + print_digit(n % base, base));
+	else if (n < base)
+		return (print_char(digit[n]));
+	else
+	{
+		count = print_digit(n / base, base);
+		return (count + print_digit(n % base, base));
+	}
 }

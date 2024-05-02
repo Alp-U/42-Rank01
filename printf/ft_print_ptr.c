@@ -12,14 +12,33 @@
 
 #include "ft_printf.h"
 
-int	print_ptr(long n, int base)
+int	put_ptr(unsigned long long ptr)
 {
 	int		count;
-	char	*hexd;
+	char	*digits;
 
-	hexd = "0123456789abcdef";
-	if (n < base)
-		return (print_char(hexd[n]));
-	count = print_ptr(n / base, base);
-	return (count + print_ptr(n % base, base));
+	count = 0;
+	digits = "0123456789abcdef";
+	if (ptr >= 16)
+	{
+		count += put_ptr(ptr / 16);
+		count += write(1, &digits[ptr % 16], 1);
+	}
+	else
+		count += write(1, &digits[ptr % 16], 1);
+	return (count);
+}
+
+int	print_ptr(void *ptr)
+{
+	int	count;
+
+	count = 0;
+	if (!ptr)
+	{
+		count += write(1, "(nil)", 5);
+		return (count);
+	}
+	write(1, "0x", 2);
+	return (count += put_ptr((unsigned long long)ptr) + 2);
 }
