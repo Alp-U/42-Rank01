@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:44:15 by autku             #+#    #+#             */
-/*   Updated: 2024/05/01 15:43:27 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/09 19:40:15 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,22 +125,32 @@ int main(void)
 	return (0);
 }*/
 
-
 int main(void)
 {
     int count;
-    char *ptr;
 
-    count = 0;
-    ptr = NULL;
     ft_printf("\n/+++++++++++++++++++++++++++++++++++++++/\n\n");
     ft_printf("\nMy func:\n");
-	count = ft_printf("This is the pointer: %p\n", ptr);
+	count = ft_printf("This is the digit: %u\n", -1);
     ft_printf("The chars written are %d\n", count);
 
 	ft_printf("\n\nThe og func:\n");
-    count = printf("This is the pointer: %p\n", ptr);
+    count = printf("This is the digit: %u\n", -1);
     printf("The chars written are %d\n", count);
     ft_printf("\n/+++++++++++++++++++++++++++++++++++++++/\n\nlooks like it's working\n\n");
 	return (0);
 }
+/*
+int main(void)
+{
+    int d;
+    int count;
+
+    d = printf("%")
+    d = (printf("%"));
+    printf("%d\n", d);
+
+    d = (ft_printf("%"));
+    ft_printf("%d", d);
+	return (0);
+}*/

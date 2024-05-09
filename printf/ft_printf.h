@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:15:10 by autku             #+#    #+#             */
-/*   Updated: 2024/04/24 22:20:59 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/09 20:11:39 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	print_char(int c);
 int	print_str(char *str);
 
 int	print_digit(long n, int base);
+
+int	print_udigit(long n, int base);
 
 int	print_hexc(long n, int base);
 

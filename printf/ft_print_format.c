@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:30:42 by autku             #+#    #+#             */
-/*   Updated: 2024/05/01 13:45:46 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/09 20:11:05 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	print_format(char specifier, va_list ap)
 		count += print_char(va_arg(ap, int));
 	else if (specifier == 's')
 		count += print_str(va_arg(ap, char *));
-	else if (specifier == 'd' || specifier == 'u' || specifier == 'i')
+	else if (specifier == 'd' || specifier == 'i')
 		count += print_digit((long)(va_arg(ap, int)), 10);
+	else if (specifier == 'u')
+		count += print_udigit((long)(va_arg(ap, int)),10);
 	else if (specifier == 'x')
 		count += print_digit((long)(va_arg(ap, unsigned int)), 16);
 	else if (specifier == 'p')
