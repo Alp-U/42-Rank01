@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 21:15:10 by autku             #+#    #+#             */
-/*   Updated: 2024/05/10 10:21:53 by autku            ###   ########.fr       */
+/*   Created: 2024/05/09 15:28:53 by autku             #+#    #+#             */
+/*   Updated: 2024/05/10 11:26:48 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <unistd.h>
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+# endif
+
 # include <stdio.h>
-# include <stdarg.h>
+# include <fcntl.h>
 # include <stdlib.h>
+# include <unistd.h>
 
-int		print_char(int c);
+char	*ft_strdup(char *str);
 
-int		print_str(char *str);
+int		ft_strchr(const char *s, int c);
 
-int		print_digit(long n, int base);
+char	*ft_strjoin(char const *s1, char const *s2);
 
-int		get_digit(unsigned int n);
+size_t	ft_strlen(const char *str);
 
-char	*ft_uitoa(unsigned int n);
+char	*iterate_buf(int fd);
 
-int		print_udigit(unsigned int n);
+char	*get_next_line(int fd);
 
-int		print_hexc(long n, int base);
-
-int		print_ptr(void *ptr);
-
-int		print_format(char specifier, va_list ap);
-
-int		ft_printf(const char *format, ...);
+int	main(void);
 
 #endif

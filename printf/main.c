@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:44:15 by autku             #+#    #+#             */
-/*   Updated: 2024/05/09 19:40:15 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/10 10:26:29 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,22 +124,22 @@ int main(void)
     ft_printf("\n/+++++++++++++++++++++++++++++++++++++++/\n\nlooks like it's working\n\n");
 	return (0);
 }*/
-
+/*
 int main(void)
 {
     int count;
 
     ft_printf("\n/+++++++++++++++++++++++++++++++++++++++/\n\n");
     ft_printf("\nMy func:\n");
-	count = ft_printf("This is the digit: %u\n", -1);
+	count = ft_printf("This is the digit: %u\n", 1000);
     ft_printf("The chars written are %d\n", count);
 
 	ft_printf("\n\nThe og func:\n");
-    count = printf("This is the digit: %u\n", -1);
+    count = printf("This is the digit: %u\n", 1000);
     printf("The chars written are %d\n", count);
     ft_printf("\n/+++++++++++++++++++++++++++++++++++++++/\n\nlooks like it's working\n\n");
 	return (0);
-}
+}*/
 /*
 int main(void)
 {

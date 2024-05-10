@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_digit.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 21:27:57 by autku             #+#    #+#             */
-/*   Updated: 2024/05/10 10:03:59 by autku            ###   ########.fr       */
+/*   Created: 2024/05/10 11:36:31 by autku             #+#    #+#             */
+/*   Updated: 2024/05/10 11:36:49 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "get_next_line.h"
 
-int	print_digit(long n, int base)
+int	main(void)
 {
-	int		count;
-	char	*digit;
+	int		fd;
+	char	*read_line;
 
-	digit = "0123456789abcdef";
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		return (print_digit(-n, base) + 1);
-	}
-	else if (n < base)
-		return (print_char(digit[n]));
-	else
-	{
-		count = print_digit(n / base, base);
-		return (count + print_digit(n % base, base));
-	}
+	fd = open("text.txt", O_RDONLY);
+	if (fd == -1)
+		return (printf("Error opening file\n"),1);
+	read_line = get_next_line(fd);
+	printf("This is the read line:\n%s\n", read_line);
+	close(fd);
+	return (0);
 }
