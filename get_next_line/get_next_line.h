@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:28:53 by autku             #+#    #+#             */
-/*   Updated: 2024/05/10 11:26:48 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/13 22:17:45 by alp              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,22 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ft_strdup(char *str);
+char    *ft_substr(char const *s, unsigned int start, size_t len);
 
-int		ft_strchr(const char *s, int c);
-
-char	*ft_strjoin(char const *s1, char const *s2);
+int     ft_strchr(const char *s, int c);
 
 size_t	ft_strlen(const char *str);
 
-char	*iterate_buf(int fd);
+char	*ft_strdup(char *str);
 
-char	*get_next_line(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
 
-int	main(void);
+size_t  ft_strlcpy(char *dst, const char *src, size_t size);
+
+char	*get_lines(char *str);
+
+char	*iterate_buf(int fd, char *buf, char *stash);
+
+char	*get_next_line(int  fd);
 
 #endif

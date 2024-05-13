@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 11:36:31 by autku             #+#    #+#             */
-/*   Updated: 2024/05/10 11:36:49 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/13 22:27:57 by alp              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,28 @@
 int	main(void)
 {
 	int		fd;
-	char	*read_line;
+	char	*line;
 
 	fd = open("text.txt", O_RDONLY);
 	if (fd == -1)
-		return (printf("Error opening file\n"),1);
-	read_line = get_next_line(fd);
-	printf("This is the read line:\n%s\n", read_line);
+		return (1);
+	
+	/*line = get_next_line(fd);
+	printf("%s", line);
+	free(line);*/
+	
+	/*while (read(fd, 0, 0) != EOF)
+    {
+		line = get_next_line(fd);
+        printf("%s", line);
+        free(line);
+    }*/
+
+	while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
 	close(fd);
 	return (0);
 }
