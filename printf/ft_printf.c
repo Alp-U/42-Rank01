@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 18:46:40 by autku             #+#    #+#             */
-/*   Updated: 2024/05/10 10:23:05 by autku            ###   ########.fr       */
+/*   Updated: 2024/05/15 13:45:42 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_printf(const char *format, ...)
 	int		count;
 
 	count = 0;
+	if (!format)
+		return (-1);
 	va_start(ap, format);
 	while (*format)
 	{
