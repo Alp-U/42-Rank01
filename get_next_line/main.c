@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 11:36:31 by autku             #+#    #+#             */
-/*   Updated: 2024/05/13 22:27:57 by alp              ###   ########.fr       */
+/*   Updated: 2024/05/17 15:48:12 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,21 @@ int	main(void)
 	if (fd == -1)
 		return (1);
 	
-	/*line = get_next_line(fd);
+	line = get_next_line(fd);
 	printf("%s", line);
-	free(line);*/
-	
-	/*while (read(fd, 0, 0) != EOF)
+	free(line);
+	/*
+	while (read(fd, 0, 0) != EOF)
     {
 		line = get_next_line(fd);
         printf("%s", line);
         free(line);
-    }*/
-
+    }*//*
 	while ((line = get_next_line(fd)) != NULL)
     {
         printf("%s", line);
         free(line);
-    }
+    }*/
 	close(fd);
 	return (0);
 }
