@@ -6,15 +6,19 @@
 /*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:28:53 by autku             #+#    #+#             */
-/*   Updated: 2024/05/20 13:22:39 by alp              ###   ########.fr       */
+/*   Updated: 2024/05/20 14:35:10 by alp              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdio.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include <fcntl.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

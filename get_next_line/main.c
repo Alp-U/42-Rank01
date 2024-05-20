@@ -6,11 +6,12 @@
 /*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:42:45 by alp               #+#    #+#             */
-/*   Updated: 2024/05/20 13:00:44 by alp              ###   ########.fr       */
+/*   Updated: 2024/05/20 14:36:19 by alp              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 /*
 int	main(void)
 {
@@ -26,7 +27,6 @@ int	main(void)
 	close(fd);
 	return (0);
 }*/
-
 int	main(void)
 {
 	int		fd;
