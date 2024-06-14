@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 22:13:28 by alp               #+#    #+#             */
-/*   Updated: 2024/06/14 15:21:12 by autku            ###   ########.fr       */
+/*   Updated: 2024/06/14 15:26:37 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ char	*get_next_line(int fd)
 	stash = get_line(final_str);
 	return (final_str);
 }
-
-/*int	main(void)
+/*/int	main(void)
 {
 	int		fd;
 	char	*line;
