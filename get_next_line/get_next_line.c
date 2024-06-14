@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 22:13:28 by alp               #+#    #+#             */
-/*   Updated: 2024/05/20 12:58:05 by alp              ###   ########.fr       */
+/*   Updated: 2024/06/14 15:21:12 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	char		*buf;
 
 	buf = (char *)malloc(BUFFER_SIZE + 1);
-	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0)
 	{
 		free(buf);
 		free(stash);
