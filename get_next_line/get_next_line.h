@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:28:53 by autku             #+#    #+#             */
-/*   Updated: 2024/05/20 14:35:10 by alp              ###   ########.fr       */
+/*   Updated: 2024/06/15 15:22:55 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+void	join_to_stash(char **stash, char *buf);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 

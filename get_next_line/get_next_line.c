@@ -6,11 +6,22 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 22:13:28 by alp               #+#    #+#             */
-/*   Updated: 2024/06/14 15:26:37 by autku            ###   ########.fr       */
+/*   Updated: 2024/06/15 15:29:11 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	join_to_stash(char **stash, char *buf)
+{
+	char	*temp;
+
+	temp = *stash;
+	*stash = ft_strjoin(temp, buf);
+	if (!*stash)
+		free(stash);
+	free(temp);
+}
 
 int	ft_strchr(const char *s, int c)
 {
@@ -51,7 +62,6 @@ char	*get_line(char *line_buf)
 char	*iterate_buf(int fd, char *buf, char *stash)
 {
 	int		bytes;
-	char	*temp;
 
 	bytes = 1;
 	while (bytes > 0)
@@ -63,18 +73,17 @@ char	*iterate_buf(int fd, char *buf, char *stash)
 			break ;
 		buf[bytes] = '\0';
 		if (stash)
-		{
-			temp = stash;
-			stash = ft_strjoin(temp, buf);
-			free(temp);
-		}
+			join_to_stash(&stash, buf);
 		else
+		{
 			stash = ft_strdup(buf);
+			if (!stash)
+				return (free(stash), NULL);
+		}
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
-	free(buf);
-	return (stash);
+	return (free(buf), stash);
 }
 
 char	*get_next_line(int fd)
@@ -100,7 +109,8 @@ char	*get_next_line(int fd)
 	stash = get_line(final_str);
 	return (final_str);
 }
-/*/int	main(void)
+
+/* int	main(void)
 {
 	int		fd;
 	char	*line;
@@ -109,11 +119,6 @@ char	*get_next_line(int fd)
 	if (fd == -1)
 		return (1);
 
-	//for single line printing
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);
@@ -121,4 +126,4 @@ char	*get_next_line(int fd)
 	}
 	close(fd);
 	return (0);
-}*/
+} */
