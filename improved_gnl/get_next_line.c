@@ -6,7 +6,7 @@
 /*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 22:13:28 by alp               #+#    #+#             */
-/*   Updated: 2024/06/15 15:34:58 by autku            ###   ########.fr       */
+/*   Updated: 2024/06/15 18:57:10 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	join_to_stash(char **stash, char *buf)
 	temp = *stash;
 	*stash = ft_strjoin(temp, buf);
 	if (!*stash)
-		free(stash);
+		free(*stash); // TODO: Wichtig zu schauen, dass der richtige pointer gefreed wird.
 	free(temp);
 }
 
@@ -47,7 +47,7 @@ char	*get_line(char *line_buf)
 	i = 0;
 	while (line_buf[i] != '\n' && line_buf[i] != '\0')
 		i++;
-	if (!line_buf[i] || !line_buf[1])
+	if (!line_buf[i] || !line_buf[1]) // TODO: wenn length(line_buff) gleich 1 ist, dann ist das out of bounds 
 		return (NULL);
 	stash = ft_substr(line_buf, i + 1, ft_strlen(line_buf) - i);
 	if (!stash)
@@ -68,7 +68,7 @@ char	*iterate_buf(int fd, char *buf, char *stash)
 	{
 		bytes = read(fd, buf, BUFFER_SIZE);
 		if (bytes == -1)
-			return (free(stash), stash = NULL, NULL);
+			return (free(stash), free(buf), stash = NULL, NULL); // TODO: hier wird stash nur lokal auf `NULL` gesetzt
 		else if (bytes == 0)
 			break ;
 		buf[bytes] = '\0';
@@ -78,7 +78,7 @@ char	*iterate_buf(int fd, char *buf, char *stash)
 		{
 			stash = ft_strdup(buf);
 			if (!stash)
-				return (free(stash), NULL);
+				return (free(stash), free(buf), stash = NULL, NULL);
 		}
 		if (ft_strchr(buf, '\n'))
 			break ;
@@ -88,21 +88,15 @@ char	*iterate_buf(int fd, char *buf, char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash = NULL;
 	char		*final_str;
 	char		*buf;
 
-	buf = (char *)malloc(BUFFER_SIZE + 1);
 	if (BUFFER_SIZE <= 0 || fd < 0)
-	{
-		free(buf);
-		free(stash);
-		buf = NULL;
-		stash = NULL;
-		return (NULL);
-	}
+		return (free(stash), stash = NULL, NULL)
+	buf = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buf)
-		return (NULL);
+		return (free(buf), free(stash), stash = NULL, NULL); // TODO: wenn faield auch stash freen
 	final_str = iterate_buf(fd, buf, stash);
 	if (!final_str)
 		return (NULL);
@@ -110,14 +104,14 @@ char	*get_next_line(int fd)
 	return (final_str);
 }
 
-/* int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*line;
 
 	fd = open("text.txt", O_RDONLY);
 	if (fd == -1)
-		return (1);
+		return (1);	
 
 	while ((line = get_next_line(fd)) != NULL)
 	{
@@ -126,4 +120,4 @@ char	*get_next_line(int fd)
 	}
 	close(fd);
 	return (0);
-} */
+}
