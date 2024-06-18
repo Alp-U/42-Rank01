@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alp <alp@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: autku <autku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 22:13:28 by alp               #+#    #+#             */
-/*   Updated: 2024/06/16 13:12:27 by alp              ###   ########.fr       */
+/*   Updated: 2024/06/17 16:46:06 by autku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	return (final_str);
 }
 
-/* int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	char	*line;
@@ -120,4 +120,4 @@ char	*get_next_line(int fd)
 	}
 	close(fd);
 	return (0);
-} */
+}*/
